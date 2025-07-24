@@ -9,7 +9,7 @@ The project has been tested under `python 3.9.10` and `torch-1.10.2`.
 
 ## References:
 
-- [tribhuvanesh/knockoffnets](https://github.com/tribhuvanesh/knockoffnet)
+- [tribhuvanesh/knockoffnets](https://github.com/tribhuvanesh/knockoffnets)
 
 ## Usage of this library module
 
