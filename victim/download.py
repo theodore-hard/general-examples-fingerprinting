@@ -7,9 +7,9 @@ from datetime import datetime
 import torch
 from torch.utils.data import DataLoader
 
-import fingerprint.models.zoo as zoo
-import fingerprint.utils.model as model_utils
-from fingerprint import datasets
+import models.zoo as zoo
+import utils.model as model_utils
+import datasets
 
 
 def main():

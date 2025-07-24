@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os.path as osp
 from torchvision.datasets import ImageFolder
-import fingerprint.config as cfg
+import config as cfg
 
 
 class Cifar10(ImageFolder):
@@ -13,7 +13,7 @@ class Cifar10(ImageFolder):
         super().__init__(root=_root, transform=transform,
                          target_transform=target_transform)
         self.root = root
-        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period ,len(self.samples)))
+        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period, len(self.samples)))
 
 
 class Cifar100(ImageFolder):
@@ -25,7 +25,7 @@ class Cifar100(ImageFolder):
         super().__init__(root=_root, transform=transform,
                          target_transform=target_transform)
         self.root = root
-        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period ,len(self.samples)))
+        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period, len(self.samples)))
 
 
 class ImageNet(ImageFolder):
@@ -37,4 +37,4 @@ class ImageNet(ImageFolder):
         super().__init__(root=_root, transform=transform,
                          target_transform=target_transform)
         self.root = root
-        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period ,len(self.samples)))
+        print('=> done loading {} ({}) with {} examples'.format(self.__class__.__name__, period, len(self.samples)))
