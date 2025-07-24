@@ -98,13 +98,12 @@ def extract_general_examples(model, images, labels, precision, targeted, steps=1
         span = source_output[0][i] - source_output[0][l]
         span = span.cpu().item()
 
-        # 计算span平均值
-        # 计算每行元素与最大值的绝对距离
+        # Compute the absolute distance between each element and the maximum value per row
         max_values, max_indices = torch.max(source_output, dim=1, keepdim=True)
         distances = torch.abs(source_output - max_values)
-        # 将最大值位置的距离设为0（后续排除）
+        # Set distance at maximum value positions to 0 (to be excluded later)
         distances.scatter_(1, max_indices, 0)
-        # 计算非零距离的平均值（排除最大值自身）
+        # Calculate average of non-zero distances (excluding the maximum value itself)
         avg_distances = distances.sum(dim=1) / (source_output.size(1) - 1)
         max_value = max_values[0].cpu().item()
         avg_distance = avg_distances[0].cpu().item()
@@ -206,13 +205,9 @@ def batch_mid_forward(model, x, layer_index, batch_size=200):
     return outputs
 
 
-# 获取最大方差，用以计算tensor转换后，最小的l2范数距离
+# Obtain the maximum variance
 def get_max_min(transform_train):
-    # 取出标准化的 transform
-    # filter用法：用于过滤序列，过滤掉不符合条件的元素，返回符合条件的元素组成新列表。
-    # filter(function,iterable)，function -- 判断函数，iterable -- 可迭代对象
     norm_transform = list(filter(lambda x: isinstance(x, transforms.Normalize), transform_train.transforms))
-    # 取出均值
     mean_list = norm_transform[0].mean
     std_list = norm_transform[0].std
     min_list = [0.0, 0.0, 0.0]
