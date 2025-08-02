@@ -11,6 +11,10 @@ import models.zoo as zoo
 import utils.model as model_utils
 import datasets
 
+def create_dir(dir_path):
+    if not osp.exists(dir_path):
+        print('Path {} does not exist. Creating it...'.format(dir_path))
+        os.makedirs(dir_path)
 
 def main():
     parser = argparse.ArgumentParser(description='Train a model')
@@ -58,6 +62,8 @@ def main():
     model.eval()
 
     out_path = params['out_path']
+    if not osp.exists(out_path):
+        create_dir(out_path)
     batch_size = params['batch_size']
     num_workers = params['num_workers']
     model_out_path = osp.join(out_path, 'checkpoint.pth.tar')
