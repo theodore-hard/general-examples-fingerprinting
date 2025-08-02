@@ -1,3 +1,5 @@
+import torchvision
+
 def get_net(modelname, pretrained=False, num_classes=1000):
     try:
         if pretrained:
