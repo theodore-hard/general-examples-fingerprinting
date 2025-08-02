@@ -123,12 +123,12 @@ def extract_general_examples(model, images, labels, precision, targeted, steps=1
             j = random.choice(ll)
 
         source_label_value = source_output[0][i].cpu().item()
-        pert_tanh = torch.zeros(x.size()).to(self.device)
+        pert_tanh = torch.zeros(x.size()).to(device)
         pert_tanh_var = Variable(pert_tanh, requires_grad=True)
 
         x = x.detach()
         x.requires_grad = False
-        inputs_tanh = to_tanh_space(x, box).to(self.device)
+        inputs_tanh = to_tanh_space(x, box).to(device)
         inputs_tanh_var = Variable(inputs_tanh, requires_grad=False)
 
         optimizer = torch.optim.Adam([pert_tanh_var], lr=lr)
