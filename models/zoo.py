@@ -5,19 +5,13 @@ def get_net(modelname, pretrained=False, num_classes=1000):
         if pretrained:
             pretrained_model = eval('torchvision.models.{}'.format(modelname))(pretrained=True)
             if num_classes != 1000:
-                model = eval('fingerprint.models.{}'.format(modelname))(num_classes=num_classes)
-                #print('before copy weights:', model.state_dict())
+                model = eval('torchvision.models.{}'.format(modelname))(num_classes=num_classes)
                 copy_weights_(pretrained_model.state_dict(), model.state_dict())
-                #model.load_state_dict(dest_state_dict)
-                #print('after copy weights:', model.state_dict())
                 return model
             else:
                 return pretrained_model
         else:
-            try:
-                model = eval('torchvision.models.{}'.format(modelname))(num_classes=num_classes)
-            except Exception as e:
-                model = eval('fingerprint.models.{}'.format(modelname))(num_classes=num_classes)
+            model = eval('torchvision.models.{}'.format(modelname))(num_classes=num_classes)
             return model
     except AssertionError as e:
         print(e)
