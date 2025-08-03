@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This is a _rich-documented_ [PyTorch](https://pytorch.org/) implementation of [Deep Neural Network Fingerprinting By General Examples]().  
+This is a [PyTorch](https://pytorch.org/) implementation of [Deep Neural Network Fingerprinting By General Examples]().  
 The main reason to develop this respository is to make it easier to do research using the attach technique.  
 The project has been tested under `python 3.9.10` and `torch-1.10.2`.
 
