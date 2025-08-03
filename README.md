@@ -10,7 +10,7 @@ The project has been tested under `python 3.9.10` and `torch-1.10.2`.
 ## References:
 
 - [tribhuvanesh/knockoffnets](https://github.com/tribhuvanesh/knockoffnets)
-
+- [grasses/RemovalNet](https://github.com/grasses/RemovalNet)
 ## Usage of this library module
 
 ### trained model
