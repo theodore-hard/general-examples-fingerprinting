@@ -151,6 +151,7 @@ def extract_general_examples(model, images, labels, precision, targeted, steps=1
             loss = ReLU(second_largest_value - target_value + span)
 
             if pred_value <= stop_threshold:
+                x = from_tanh_space(inputs_tanh_var + pert_tanh_var, box)
                 print(
                     f"-> label_prob={softmax_outputs[0][j]} ≥  {precision}  target_value={linear_output[0][j]} ≥ {source_label_value}\n")
                 adv_x.append(x.detach().cpu())
